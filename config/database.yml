@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: harbor_production
-  username: harbor
-  password: <%= ENV['HARBOR_DATABASE_PASSWORD'] %>
+  database: 'heroku_7db2b52810e3341'
+  username: 'bbe170fa2533ec'
+  password: <%= ENV['DB_PASSWORD'] %>

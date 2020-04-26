@@ -13,7 +13,10 @@
 
 <body>
   <%== render 'layouts/header' %>
-  <main>
+  <% if !current_page?(root_path) %>
+  <%== render 'layouts/breadcrumb'%>
+  <% end %>
+  <main class="bg-light">
     <%= yield %>
   </main>
 

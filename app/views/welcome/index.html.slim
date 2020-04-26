@@ -1,26 +1,31 @@
+scss: 
+	.list-border { 
+		border-bottom: 1px solid #cdcdcd;
+	}
+
 main.bg-light
-	article.mb-5.py-3.bg-white
-		h5.border-bottom.border-dark.pb-3.text-center 人気急上昇Live
+	article.mb-3.py-3.bg-white
+		h5.list-border.pb-3.text-center NEW INFO
 		ul.list-unstyled
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'darenogare_1', :size =>'100' 
 					.media-body
 						h5 ダレノガレ明美
 						p 4/26 19:00~			
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'niki', :size =>'100' 
 					.media-body
 						h5 niki
 						p 4/26 20:00~			
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'kiritani', :size =>'100' 
 					.media-body
 						h5 桐谷 美玲
 						p 4/26 17:00~			
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'sasakinozomi', :size =>'100' 
 					.media-body
@@ -31,28 +36,28 @@ main.bg-light
 			
 
 
-	article.mb-5.py-3.bg-white
-		h5.border-bottom.border-dark.pb-3.text-center 人気急上昇Live
+	article.mb-3.py-3.bg-white
+		h5.list-border.pb-3.text-center TRENDING
 		ul.list-unstyled
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'darenogare_1', :size =>'100' 
 					.media-body
 						h5 ダレノガレ明美
 						p 4/26 19:00~			
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'niki', :size =>'100' 
 					.media-body
 						h5 niki
 						p 4/26 20:00~			
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'kiritani', :size =>'100' 
 					.media-body
 						h5 桐谷 美玲
 						p 4/26 17:00~			
-			li.p-2.border-bottom.border-dark
+			li.p-2.list-border
 				.media
 					.mr-3= image_tag 'sasakinozomi', :size =>'100' 
 					.media-body
@@ -60,4 +65,41 @@ main.bg-light
 						p 4/26 18:00~		
 		
 		button.btn.btn-outline-dark.w-75.mx-auto.d-block type="button"  MORE
-			
+
+	article.mb-3.py-3.bg-white
+		h5.list-border.pb-3.text-center RANKING
+		ul.list-unstyled
+			li.p-2.list-border
+				.media
+					.mr-3= image_tag 'darenogare_1', :size =>'100' 
+					.media-body
+						h5
+							span.mr-2 1位
+						 	| ダレノガレ明美
+						p 4/26 19:00~			
+			li.p-2.list-border
+				.media
+					.mr-3= image_tag 'niki', :size =>'100' 
+					.media-body
+						h5
+							span.mr-2 2位
+						 	| niki
+						p 4/26 20:00~			
+			li.p-2.list-border
+				.media
+					.mr-3= image_tag 'kiritani', :size =>'100' 
+					.media-body
+						h5
+							span.mr-2 3位
+						 	| 桐谷美玲
+						p 4/26 17:00~			
+			li.p-2.list-border
+				.media
+					.mr-3= image_tag 'sasakinozomi', :size =>'100' 
+					.media-body
+						h5
+							span.mr-2 4位
+						 	| 佐々木希
+						p 4/26 18:00~		
+		
+		button.btn.btn-outline-dark.w-75.mx-auto.d-block type="button"  MORE

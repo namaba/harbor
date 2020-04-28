@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
   resources :talents, only: %i[show]
   resources :lives, only: %i[index]
+
+  namespace :admin do
+    resources :talents
+  end
 end

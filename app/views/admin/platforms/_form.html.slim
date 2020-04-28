@@ -1,0 +1,5 @@
+= form_with model: [:admin, @platform], local: true  do |f|
+	.form-group
+		= f.label :name, class: 'bmd-label-floating'
+		= f.text_field :name, class: 'form-control'
+	= f.submit class: 'btn btn-success btn-raised'

@@ -14,7 +14,7 @@ class Admin::TalentsController < Admin::ApplicationController
 		if @talent.save
 			redirect_to admin_talents_path, notice: '保存しました'
 		else
-			flash[:alert] = @talent.errors.full_messages.join("\n")
+			flash.now[:alert] = @talent.errors.full_messages.join("\n")
 			render :new
 		end
 	end
@@ -28,9 +28,13 @@ class Admin::TalentsController < Admin::ApplicationController
 		if @talent.save
 			redirect_to admin_talent_path(@talent), notice: '更新しました'
 		else
-			flash[:alert] = '更新に失敗しました'
+			flash.now[:alert] = @talent.errors.full_messages.join("\n")
 			render :edit
 		end
+	end
+
+	def destroy
+
 	end
 
 

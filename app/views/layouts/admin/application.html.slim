@@ -8,7 +8,10 @@ html[lang="ja"]
 		== csp_meta_tag
 		== stylesheet_pack_tag 'application', media: 'all'
 		== javascript_pack_tag 'application'
+		javascript:
+			$(document).ready(function() { $('body').bootstrapMaterialDesign();});
 	body
 		== render 'layouts/admin/header'
 		main.bg-light
 			== yield
+	

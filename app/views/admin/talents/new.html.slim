@@ -1,0 +1,19 @@
+.container
+	.card
+		.card-body
+			h1 タレント新規作成
+
+			= form_with model: [:admin, @talent], local: true  do |f|
+				.form-group
+					= f.label :name, class: 'bmd-label-floating'
+					= f.text_field :name, class: 'form-control'
+				.form-group
+					= f.label :instagram_url, class: 'bmd-label-floating'
+					= f.text_field :instagram_url, class: 'form-control'
+				.form-group
+					= f.label :youtube_url, class: 'bmd-label-floating'
+					= f.text_field :youtube_url, class: 'form-control'
+				.form-group
+					= f.label :memo, class: 'bmd-label-floating'
+					= f.text_field :memo, class: 'form-control'
+				= f.submit class: 'btn btn-success btn-raised'

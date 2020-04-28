@@ -1,0 +1,22 @@
+.container.my-3
+  .card
+    .card-body
+      h1　カテゴリー一覧
+      = link_to '新規作成', new_admin_category_path, class: 'btn btn-raised btn-primary'
+
+      table.table
+        thead
+          tr
+						th id
+						th title
+						th
+        tbody
+          - @categories.each do |category|
+            tr
+							td= category.id
+							td= category.title
+							td= link_to '編集', edit_admin_category_path(category), class: 'btn btn-primary btn-sm'
+							td= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm'
+              
+
+

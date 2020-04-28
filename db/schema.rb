@@ -13,8 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_04_26_110138) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "parent", null: false
-    t.string "child", null: false
+    t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

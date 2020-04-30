@@ -51,6 +51,4 @@ class Admin::PlatformsController < Admin::ApplicationController
 			:name
 		)
 	end
-	
-	
 end

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :talents
     resources :categories
     resources :platforms
+    resources :lives
   end
 end

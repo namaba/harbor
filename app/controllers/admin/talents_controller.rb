@@ -1,5 +1,5 @@
 class Admin::TalentsController < Admin::ApplicationController
-	before_action :set_talent, only: %i[show edit]
+	before_action :set_talent, only: %i[show edit update destroy]
 
 	def index
 		@talents = Talent.all
@@ -12,7 +12,7 @@ class Admin::TalentsController < Admin::ApplicationController
 	def create
 		@talent = Talent.new(talent_params)
 		if @talent.save
-			redirect_to admin_talents_path, notice: '保存しました'
+			redirect_to admin_talent_path(@talent), notice: '保存しました'
 		else
 			flash.now[:alert] = @talent.errors.full_messages.join("\n")
 			render :new
@@ -34,9 +34,13 @@ class Admin::TalentsController < Admin::ApplicationController
 	end
 
 	def destroy
-
+		option = if @talent.destroy
+			{ notice: '削除しました' }
+		else
+			{ alert: '削除に失敗しました' }
+		end
+		redirect_to admin_talents_path, option
 	end
-
 
 	private
 
@@ -52,6 +56,5 @@ class Admin::TalentsController < Admin::ApplicationController
 			:memo,
 			:image,
 		)
-		
 	end
 end

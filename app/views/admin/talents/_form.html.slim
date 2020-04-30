@@ -14,7 +14,7 @@
 		= f.text_field :memo, class: 'form-control'
 	
 	.form-group
-		= image_tag(@talent.image_url, width: 100) if @talent.image?
+		= image_tag(@talent.image.url, width: 100) if @talent.image?
 		= f.label :image, class: 'bmd-label-floating'
 		= f.file_field :image, class: 'form-control-file'
 		= f.hidden_field :image_cache

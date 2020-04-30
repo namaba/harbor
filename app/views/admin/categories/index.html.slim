@@ -1,3 +1,10 @@
+scss:
+  table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+  
 .container.my-3
   .card
     .card-body
@@ -11,10 +18,13 @@
 						th title
 						th
         tbody
-          - @categories.each do |category|
-            tr
-							td= category.id
-							td= category.title
-							td= link_to '編集', edit_admin_category_path(category), class: 'btn btn-primary btn-sm'
-							td= link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm'
-              
+          - if @categories
+            - @categories.each do |category|
+              tr
+                td= category.id
+                td= category.title
+                td
+                  = link_to '編集', edit_admin_category_path(category), class: 'btn btn-primary btn-sm'
+                  = link_to '削除', admin_category_path(category), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm'
+          - else
+            p まだカテゴリがありません    

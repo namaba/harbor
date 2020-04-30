@@ -1,3 +1,10 @@
+scss:
+  table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
 .container.my-3
   .card
     .card-body
@@ -13,15 +20,18 @@
             th YouTubeURL
             th メモ
             th
-            th
         tbody
-          - @talents.each do |talent|
-            tr
-              td= link_to talent.name, admin_talent_path(talent)
-              td= link_to talent.instagram_url, talent.instagram_url, target: '_blank', rel: 'noopener'
-              td= link_to talent.youtube_url, talent.youtube_url, target: '_blank', rel: 'noopener'
-              td= talent.memo
-              td= link_to '編集', edit_admin_talent_path(talent), class: 'btn btn-link btn-sm'
-              td= link_to '削除', admin_talent_path(talent), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-raised btn-danger btn-sm'
+          - if @talents
+            - @talents.each do |talent|
+              tr
+                td= link_to talent.name, admin_talent_path(talent)
+                td= link_to talent.instagram_url, talent.instagram_url, target: '_blank', rel: 'noopener'
+                td= link_to talent.youtube_url, talent.youtube_url, target: '_blank', rel: 'noopener'
+                td.text-nowrap= talent.memo
+                td
+                  = link_to '編集', edit_admin_talent_path(talent), class: 'btn btn-link btn-sm'
+                  = link_to '削除', admin_talent_path(talent), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm'
+          - else
+            p まだタレントがいません
 
 

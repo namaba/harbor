@@ -1,16 +1,22 @@
+scss:
+  table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
 .container.my-3
 	.card
 		.card-body
 			h1 LIVE
 			= link_to '新規作成', new_admin_life_path, class: 'btn btn-raised btn-primary'
 
-			table.table
+			table.table.table-hover
 				thead
 					tr
 						th タレント
 						th プラットフォーム
 						th 開始時間
-						th
 						th
 				tbody
 					- @lives.each do |live|
@@ -18,5 +24,6 @@
 							td= link_to live.talent.name, admin_life_path(live)
 							td live.platform.name
 							td l live.start_at, format: long_date
-							td= link_to '編集', edit_admin_life_path(live), class: 'btn btn-primary btn-sm'
-							td= link_to '削除', admin_life_path(live), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger btn-sm'
+							td
+								= link_to '編集', edit_admin_life_path(live), class: 'btn btn-primary btn-sm'
+								= link_to '削除', admin_life_path(live), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger btn-sm'

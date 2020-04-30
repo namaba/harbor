@@ -55,6 +55,8 @@ class Admin::TalentsController < Admin::ApplicationController
 			:youtube_url,
 			:memo,
 			:image,
+			:image_cache,
+			:remove_image,
 		)
 	end
 end

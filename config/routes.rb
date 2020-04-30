@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :lives, only: %i[index]
 
   namespace :admin do
+    root to: 'talents#index'
     resources :talents
     resources :categories
     resources :platforms

@@ -13,4 +13,14 @@
 #
 class Talent < ApplicationRecord
 	mount_uploader :image, ImageUploader
+
+	# 　csvファイルからタレントデータをインポート
+	def import_csv
+		data_list = CSV.read("live_matome.csv")
+		data_list.each do |d|
+			t = Talent.new({name: d[0], memo: d[1], instagram_url: d[3], youtube_url: d[4]})
+			t.save if t.valid?
+		end
+	end
+	
 end

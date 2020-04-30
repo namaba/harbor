@@ -12,4 +12,5 @@
 #  updated_at    :datetime         not null
 #
 class Talent < ApplicationRecord
+	mount_uploader :image, ImageUploader
 end

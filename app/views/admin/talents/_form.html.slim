@@ -1,7 +1,8 @@
 = form_with model: [:admin, @talent], local: true  do |f|
+	
 	.form-group
 		= f.label :name, class: 'bmd-label-floating'
-		= f.text_field :name, class: 'form-control'
+		= f.text_field :name, class: 'form-control', required: true
 	.form-group
 		= f.label :instagram_url, class: 'bmd-label-floating'
 		= f.text_field :instagram_url, class: 'form-control'
@@ -11,4 +12,15 @@
 	.form-group
 		= f.label :memo, class: 'bmd-label-floating'
 		= f.text_field :memo, class: 'form-control'
+	
+	.form-group
+		= image_tag(@talent.image_url, width: 100) if @talent.image?
+		= f.label :image, class: 'bmd-label-floating'
+		= f.file_field :image, class: 'form-control-file'
+		= f.hidden_field :image_cache
+	- @talent.image?
+		.checkbox
+			= f.check_box :remove_image
+			= f.label :remove_image, '画像削除'
+			
 	= f.submit class: 'btn btn-success btn-raised'

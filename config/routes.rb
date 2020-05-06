@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :talents, only: %i[show]
-  resources :lives, only: %i[index]
+  resources :lives, only: %i[index] do
+    get :latest_uploaded, on: :collection
+  end
 
   namespace :admin do
     root to: 'talents#index'

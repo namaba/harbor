@@ -22,4 +22,6 @@
 class Live < ApplicationRecord
   belongs_to :talent
   belongs_to :platform
+
+  scope :future, -> (the_date = Time.current) { where(arel_table[:start_at].gteq(the_date)) }
 end

@@ -1,37 +1,54 @@
 article.mb-3
   .card
+    .card-header.text-center.h5 TODAY
+    ul.list-group.list-group-flush
+      - @today_lives.each do |live|
+        li.list-group-item.border-bottom.p-2
+          = link_to talent_path(live.talent) do
+            .media.m-0
+              - if live.talent.image?
+                .mr-3= image_tag(live.talent.image.url, width: 100)
+              - else
+                .mr-3= image_tag 'profile_image_sample', :size => '100'
+              .media-body.py-3
+                p= live.talent.name
+                p= l live.start_at, format: :full_date
+    = link_to 'MORE', lives_path(target_date: Time.current), class: 'btn btn-light text-dark'
+
+article.mb-3
+  .card
+    .card-header.text-center.h5 TOMORROW
+    ul.list-group.list-group-flush
+      - @tomorrow_lives.each do |live|
+        li.list-group-item.border-bottom.p-2
+          = link_to talent_path(live.talent) do
+            .media.m-0
+              - if live.talent.image?
+                .mr-3= image_tag(live.talent.image.url, width: 100)
+              - else
+                .mr-3= image_tag 'profile_image_sample', :size => '100'
+              .media-body.py-3
+                p= live.talent.name
+                p= l live.start_at, format: :full_date
+    = link_to 'MORE', lives_path(target_date: Time.current.tomorrow), class: 'btn btn-light text-dark'
+
+article.mb-3
+  .card
     .card-header.text-center.h5 NEW INFO
     ul.list-group.list-group-flush
       - @latest_lives.each do |live|
         li.list-group-item.border-bottom.p-2
           = link_to talent_path(live.talent.id) do
-            .media
+            .media.m-0
               - if live.talent.image?
                 .mr-3= image_tag(live.talent.image.url, width: 100)
               - else
                 .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body
+              .media-body.py-3
                 p= live.talent.name
                 p= l live.start_at, format: :full_date
 
-    button.btn.btn-light.text-dark MORE
-
-article.mb-3
-  .card
-    .card-header.text-center.h5 TREND
-    ul.list-group.list-group-flush
-      - @trend_lives.each do |live|
-        li.list-group-item.border-bottom.p-2
-          = link_to talent_path(live.talent.id) do
-            .media
-              - if live.talent.image?
-                .mr-3= image_tag(live.talent.image.url, width: 100)
-              - else
-                .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body
-                p= live.talent.name
-                p= l live.start_at, format: :full_date
-    button.btn.btn-light.text-dark MORE
+    = link_to 'MORE', latest_uploaded_lives_path, class: 'btn btn-light text-dark'
 
 article.mb-3
   .card
@@ -40,12 +57,12 @@ article.mb-3
       - @ranking.each.with_index(1) do |talent, i|
         li.list-group-item.border-bottom.p-2
           = link_to talent_path(talent.id) do
-            .media
+            .media.m-0
               - if talent.image?
                 .mr-3= image_tag(talent.image.url, width: 100)
               - else
                 .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body
+              .media-body.py-3
                 p
                   span= "#{i}位"
                   = talent.name

@@ -15,6 +15,8 @@ class Talent < ApplicationRecord
 	mount_uploader :image, ImageUploader
 
 	has_many :lives, class_name: 'Live'
+	has_many :talent_categories
+	has_many :categories, through: :talent_categories
 
 	# 　csvファイルからタレントデータをインポート
 	def import_csv

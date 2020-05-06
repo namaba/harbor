@@ -1,0 +1,8 @@
+article.mb-3
+  .card
+    .card-header ARCHIVE
+    ul.list-group.list-group-flush
+      - @lives.each do |live|
+        li.list-group-item
+          .mr-3.w-25= live.platform.name
+          = l live.start_at, format: :full_date, class: 'btn btn-light text-dark'

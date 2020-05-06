@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'welcome#index'
 
-  resources :talents, only: %i[show]
+  resources :talents, only: %i[show] do
+    get :archives, on: :member
+  end
+
   resources :lives, only: %i[index] do
     get :latest_uploaded, on: :collection
   end

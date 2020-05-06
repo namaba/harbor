@@ -7,6 +7,6 @@ class LivesController < ApplicationController
   end
 
   def latest_uploaded
-    Live.last(20)
+    @lives = Live.last(20)
   end
 end

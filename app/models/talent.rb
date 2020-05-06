@@ -14,6 +14,8 @@
 class Talent < ApplicationRecord
 	mount_uploader :image, ImageUploader
 
+	has_many :lives, class_name: 'Live'
+
 	# 　csvファイルからタレントデータをインポート
 	def import_csv
 		data_list = CSV.read("live_matome.csv")

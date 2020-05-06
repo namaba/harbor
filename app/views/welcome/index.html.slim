@@ -1,109 +1,54 @@
 article.mb-3
-	.card
-		.card-header.text-center.h5 NEW INFO
-		ul.list-group.list-group-flush
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'kiritani', :size =>'100' 
-							.media-body
-								p 桐谷 美玲
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'sasakinozomi', :size =>'100' 
-							.media-body
-								p 佐々木 希
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'niki', :size =>'100' 
-							.media-body
-								p niki
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'darenogare_1', :size =>'100' 
-							.media-body
-								p ダレノガレ明美
-								p 4/26 19:00~		
-		button.btn.btn-light.text-dark MORE
+  .card
+    .card-header.text-center.h5 NEW INFO
+    ul.list-group.list-group-flush
+      - @latest_lives.each do |live|
+        li.list-group-item.border-bottom.p-2
+          = link_to talent_path(live.talent.id) do
+            .media
+              - if live.talent.image?
+                .mr-3= image_tag(live.talent.image.url, width: 100)
+              - else
+                .mr-3= image_tag 'profile_image_sample', :size => '100'
+              .media-body
+                p= live.talent.name
+                p= l live.start_at, format: :full_date
+
+    button.btn.btn-light.text-dark MORE
 
 article.mb-3
-	.card
-		.card-header.text-center.h5 TREND
-		ul.list-group.list-group-flush
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'kiritani', :size =>'100' 
-							.media-body
-								p 桐谷 美玲
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'sasakinozomi', :size =>'100' 
-							.media-body
-								p 佐々木 希
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'niki', :size =>'100' 
-							.media-body
-								p niki
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'darenogare_1', :size =>'100' 
-							.media-body
-								p ダレノガレ明美
-								p 4/26 19:00~		
-		button.btn.btn-light.text-dark MORE
+  .card
+    .card-header.text-center.h5 TREND
+    ul.list-group.list-group-flush
+      - @trend_lives.each do |live|
+        li.list-group-item.border-bottom.p-2
+          = link_to talent_path(live.talent.id) do
+            .media
+              - if live.talent.image?
+                .mr-3= image_tag(live.talent.image.url, width: 100)
+              - else
+                .mr-3= image_tag 'profile_image_sample', :size => '100'
+              .media-body
+                p= live.talent.name
+                p= l live.start_at, format: :full_date
+    button.btn.btn-light.text-dark MORE
 
 article.mb-3
-	.card
-		.card-header.text-center.h5 RANKING
-		ul.list-group.list-group-flush
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'kiritani', :size =>'100' 
-							.media-body
-								p
-									span 1位
-									| 桐谷 美玲
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'sasakinozomi', :size =>'100' 
-							.media-body
-								p
-									span 2位
-									| 佐々木 希
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'niki', :size =>'100' 
-							.media-body
-								p
-									span 3位
-									| niki
-								p 4/26 19:00~			
-			li.list-group-item.border-bottom.p-2
-				= link_to talent_path(1) do
-					.media
-							.mr-3= image_tag 'darenogare_1', :size =>'100' 
-							.media-body
-								p
-									span 4位
-									| ダレノガレ明美
-								p 4/26 19:00~	
-		button.btn.btn-light.text-dark MORE	
+  .card
+    .card-header.text-center.h5 RANKING
+    ul.list-group.list-group-flush
+      - @ranking.each.with_index(1) do |talent, i|
+        li.list-group-item.border-bottom.p-2
+          = link_to talent_path(talent.id) do
+            .media
+              - if talent.image?
+                .mr-3= image_tag(talent.image.url, width: 100)
+              - else
+                .mr-3= image_tag 'profile_image_sample', :size => '100'
+              .media-body
+                p
+                  span= "#{i}位"
+                  = talent.name
+                p 最新LIVE
+                P= l talent.lives.last.start_at, format: :full_date
+    button.btn.btn-light.text-dark MORE

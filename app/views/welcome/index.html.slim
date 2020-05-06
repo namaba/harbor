@@ -67,8 +67,8 @@ article.mb-3
                   span= "#{i}位"
                   = talent.name
                 p 最新LIVE
-                - if talent.lives
-                  P= l talent.lives.last.start_at, format: :full_date
-                - else
+                - if talent.lives.blank?
                   p まだありません
+                - else
+                  P= l talent.lives.last.start_at, format: :full_date
     button.btn.btn-light.text-dark MORE

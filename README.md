@@ -9,6 +9,8 @@ Things you may want to cover:
 2.6.5
 
 * System dependencies
+node 12.16.3
+yarn 1.9.4
 
 * Configuration
 

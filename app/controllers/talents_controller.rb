@@ -4,6 +4,7 @@ class TalentsController < ApplicationController
   def show
     talent_ids = Live.future.pluck(:talent_id)
     @recomend_talents = Talent.find talent_ids.sample(4)
+    @talent.ranking_increment
 	end
 
 	def archives

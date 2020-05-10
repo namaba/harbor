@@ -7,16 +7,30 @@
 #  instagram_url :string(255)
 #  memo          :text(65535)
 #  name          :string(255)      not null
+#  pv            :integer          default(0), not null
 #  youtube_url   :string(255)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
 class Talent < ApplicationRecord
 	mount_uploader :image, ImageUploader
+	include Redis::Objects
 
 	has_many :lives, class_name: 'Live'
 	has_many :talent_categories
 	has_many :categories, through: :talent_categories
+
+	sorted_set :ranking, global: true
+
+	def ranking_increment
+		ranking.increment(self.id)
+	end
+
+	def total_pv
+		ranking[self.id].to_i + pv.to_i
+	end
+
+	private
 
 	# 　csvファイルからタレントデータをインポート
 	def import_csv
@@ -30,5 +44,4 @@ class Talent < ApplicationRecord
 			end
 		end
 	end
-	
 end

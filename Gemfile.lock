@@ -195,6 +195,9 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.1.4)
+    redis-objects (1.5.0)
+      redis (~> 4.0)
     regexp_parser (1.7.0)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
@@ -285,6 +288,8 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.2)
   rails-i18n
+  redis (~> 4.0)
+  redis-objects
   sass-rails (>= 6)
   seed-fu
   selenium-webdriver

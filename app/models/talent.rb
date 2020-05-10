@@ -13,10 +13,23 @@
 #
 class Talent < ApplicationRecord
 	mount_uploader :image, ImageUploader
+	include Redis::Objects
 
 	has_many :lives, class_name: 'Live'
 	has_many :talent_categories
 	has_many :categories, through: :talent_categories
+
+	sorted_set :ranking, global: true
+
+	def ranking_increment
+		ranking.increment(self.id)
+	end
+
+	def total_pv
+		ranking[self.id].to_i
+	end
+
+	private
 
 	# 　csvファイルからタレントデータをインポート
 	def import_csv
@@ -30,5 +43,4 @@ class Talent < ApplicationRecord
 			end
 		end
 	end
-	
 end

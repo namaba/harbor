@@ -64,7 +64,7 @@ article.mb-3
                 .mr-3= image_tag 'profile_image_sample', :size => '100'
               .media-body.py-3
                 p
-                  span= "#{i}位"
+                  span= "#{i}位  #{talent.total_pv}PV"
                   = talent.name
                 p 最新LIVE
                 - if talent.lives.blank?

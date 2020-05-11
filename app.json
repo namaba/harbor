@@ -1,0 +1,10 @@
+{
+  "environments": {
+    "test": {
+      "addons":[
+        "cleardb:ignite",
+        "heroku-redis"
+      ]
+    }
+  }
+}

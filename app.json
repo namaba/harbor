@@ -1,9 +1,9 @@
 {
   "environments": {
     "test": {
-      "addons": ["cleardb:punch", "heroku-redis:in-dyno"],
-      "buildpacks": [
-        { "url": "heroku/ruby" }
+      "addons":[
+        "heroku-redis",
+        "cleardb:ignite"
       ]
     }
   }

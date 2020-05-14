@@ -7,8 +7,5 @@
     = f.collection_select :platform_id, Platform.all, :id, :name, {}, class: 'form-control'
   .form-group
     = f.label :start_at, class: 'bmd-label-floating'
-    = f.datetime_field :start_at, class: 'form-control'
-  / .form-group
-  = f.label :start_at, class: 'bmd-label-floating'
-  = f.datetime_select :start_at, {}, class: 'form-control'
+    = f.text_field :start_at, class: 'form-control result', id: 'date-time'
   = f.submit class: 'btn btn-success btn-raised'

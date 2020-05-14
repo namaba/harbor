@@ -1,11 +1,14 @@
 = form_with model: [:admin, @live], local: true  do |f|
-	.form-group
-		= f.label :talent_id, class: 'bmd-label-floating'
-		= f.collection_select :talent_id, Talent.all, :id, :name, {},  class: 'form-control' 
-	.form-group
-		= f.label :platform_id, class: 'bmd-label-floating'
-		= f.collection_select :platform_id, Platform.all, :id, :name, {},  class: 'form-control' 
-	.form-group
-		= f.label :start_at, class: 'bmd-label-floating'
-		= f.datetime_field :start_at, class: 'form-control'
-	= f.submit class: 'btn btn-success btn-raised'
+  .form-group
+    = f.label :talent_id, class: 'bmd-label-floating'
+    = f.collection_select :talent_id, Talent.all, :id, :name, {}, class: 'form-control'
+  .form-group
+    = f.label :platform_id, class: 'bmd-label-floating'
+    = f.collection_select :platform_id, Platform.all, :id, :name, {}, class: 'form-control'
+  .form-group
+    = f.label :start_at, class: 'bmd-label-floating'
+    = f.datetime_field :start_at, class: 'form-control'
+  / .form-group
+  = f.label :start_at, class: 'bmd-label-floating'
+  = f.datetime_select :start_at, {}, class: 'form-control'
+  = f.submit class: 'btn btn-success btn-raised'

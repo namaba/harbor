@@ -9,9 +9,18 @@ require("@rails/ujs").start();
 require("@rails/activestorage").start();
 require("channels");
 
+require("select2/dist/css/select2")                       // select2 本体のCSSの読み込み
+require("select2-bootstrap-theme/dist/select2-bootstrap") // select2 用の bootstrap テーマの読み込み
+global.$ = jQuery;
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import 'select2'; // globally assign select2 fn to $ element
+import 'select2/dist/css/select2.css';
+
+

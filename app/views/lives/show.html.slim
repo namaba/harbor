@@ -2,19 +2,15 @@
   .card-body
     p.alert.alert-success LIVE情報の登録ありがとうございます。
 
-    = form_with model: @live, local: true  do |f|
-      .form-group
-        = f.label :talent_id, class: 'bmd-label-floating'
-        = f.text_field :talent_id, value: @live.talent.name, disabled: true
-      .form-group
-        = f.label :platform_id, class: 'bmd-label-floating'
-        = f.text_field :platform_id, value: @live.platform.name, disabled: true
-      .form-group
-        = f.label :start_at, class: 'bmd-label-floating'
-        = f.text_field :start_at, class: 'form-control result', id: 'date-time', disabled: true
+    section
+      label.bmd-label-static Talent name
+      p= @live.talent.name
+      label.bmd-label-static Platform
+      p= @live.platform.name
+      label.bmd-label-static Start
+      p= l @live.start_at, format: :full_date
 
-
-    = link_to '編集する', edit_life_path, class: 'btn btn-outline-success mx-auto d-block'
+    = link_to '編集する', edit_life_path, class: 'btn btn-outline-success mx-auto d-block '
     = link_to '削除する', life_path, method: :delete, class: 'btn btn-outline-secondary mx-auto d-block'
     = link_to 'HOMEに戻る', root_path, class: 'btn mx-auto d-block'
 

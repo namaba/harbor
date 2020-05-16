@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     get :archives, on: :member
   end
 
-  resources :lives, only: %i[index] do
+  resources :lives do
     get :latest_uploaded, on: :collection
   end
 
   namespace :admin do
-    root to: 'talents#index'
+    root to: 'lives#index'
     resources :talents
     resources :categories
     resources :platforms

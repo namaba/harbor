@@ -3,12 +3,12 @@ import 'select2/dist/css/select2.css'
 import 'select2'
 
 window.addEventListener('DOMContentLoaded', () => {
-  $('.select2').select2(
-    {
-      dropdownAutoWidth: true,
-      width: '100%',
-      placeholder: "Classic Theme",
-      theme: "classic"
-    }
-  )
+  $(".js-select2").select2({
+    placeholder: "選択してください",
+    theme: "material"
+  });
+
+  $(".select2-selection__arrow")
+    .addClass("material-icons")
+    .html("arrow_drop_down");
 })

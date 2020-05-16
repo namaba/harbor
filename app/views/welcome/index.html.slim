@@ -2,7 +2,7 @@ article.mb-3
   .card
     .card-header.text-center.h5 TODAY
     ul.list-group.list-group-flush
-      = render :partial => "live", collection: @today_lives
+      = render :partial => "shared/live", collection: @today_lives
       - if @today_lives.blank?
         li.text-center 今日のLIVE情報がありません
     = link_to 'MORE', lives_path(target_date: Time.current), class: 'btn btn-light text-dark'
@@ -11,7 +11,7 @@ article.mb-3
   .card
     .card-header.text-center.h5 TOMORROW
     ul.list-group.list-group-flush
-      = render :partial => "live", collection: @tomorrow_lives
+      = render :partial => "shared/live", collection: @tomorrow_lives
       - if @tomorrow_lives.blank?
         li.text-center 明日のLIVE情報がありません
     = link_to 'MORE', lives_path(target_date: Time.current.tomorrow), class: 'btn btn-light text-dark'
@@ -20,7 +20,7 @@ article.mb-3
   .card
     .card-header.text-center.h5 NEW INFO
     ul.list-group.list-group-flush
-      = render :partial => "live", collection: @latest_lives
+      = render :partial => "shared/live", collection: @latest_lives
     = link_to 'MORE', latest_uploaded_lives_path, class: 'btn btn-light text-dark'
 
 article.mb-3

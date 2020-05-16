@@ -1,7 +1,7 @@
 = form_with model: [:admin, @talent], local: true  do |f|
   .form-group
     = f.label :name, class: 'bmd-label-floating'
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name, class: 'form-control', required: true
   .form-group
     = f.label :instagram_url, class: 'bmd-label-floating'
     = f.text_field :instagram_url, class: 'form-control'

@@ -12,11 +12,11 @@ article.mb-3
                 .mr-3= image_tag 'profile_image_sample', :size => '100'
               .media-body.py-3
                 p= talent.name
-                p 最新LIVE
                 - if talent.lives.blank?
                   p まだありません
                 - else
-                  P= l talent.lives.last.start_at, format: :full_date
+                  p= talent.lives.last.platform.name
+                  P= l talent.lives.last.start_at, format: :short_datetime
 scss:
   .header_img {
     width: 100%;
@@ -27,7 +27,7 @@ scss:
   }
 article.mb-3
   .card
-    .card-header RECOMEND
+    .card-header.text-center.h5 TALENTS
     .d-flex.flex-wrap
       - @talents.each do |talent|
         .card.w-50
@@ -38,5 +38,5 @@ article.mb-3
               = image_tag 'profile_image_sample'
           .card-body
             .card-title= talent.name
-            P= l talent.lives.last.start_at, format: :full_date
+            P= l talent.lives.last.start_at, format: :short_datetime
 

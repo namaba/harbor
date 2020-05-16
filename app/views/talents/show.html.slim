@@ -30,7 +30,7 @@ article.mb-3
       - @talent.lives.future.last(3).each do |live|
         li.list-group-item
           .mr-3= live.platform.name
-          = l live.start_at, format: :full_date
+          = l live.start_at, format: :short_datetime
 
 
 article.mb-3
@@ -40,7 +40,7 @@ article.mb-3
       - @talent.lives.past.last(3).each do |live|
         li.list-group-item
           .mr-3= live.platform.name
-          = l live.start_at, format: :full_date
+          = l live.start_at, format: :short_datetime
     = link_to 'MORE', archives_talent_path(@talent), class: 'btn btn-light text-dark'
 
 article.mb-3

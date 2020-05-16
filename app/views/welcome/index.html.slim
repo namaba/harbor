@@ -2,17 +2,7 @@ article.mb-3
   .card
     .card-header.text-center.h5 TODAY
     ul.list-group.list-group-flush
-      - @today_lives.each do |live|
-        li.list-group-item.border-bottom.p-2
-          = link_to talent_path(live.talent) do
-            .media.m-0
-              - if live.talent.image?
-                .mr-3= image_tag(live.talent.image.url, width: 100)
-              - else
-                .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body.py-3
-                p= live.talent.name
-                p= l live.start_at, format: :full_date
+      = render :partial => "live", collection: @today_lives
       - if @today_lives.blank?
         li.text-center 今日のLIVE情報がありません
     = link_to 'MORE', lives_path(target_date: Time.current), class: 'btn btn-light text-dark'
@@ -21,17 +11,7 @@ article.mb-3
   .card
     .card-header.text-center.h5 TOMORROW
     ul.list-group.list-group-flush
-      - @tomorrow_lives.each do |live|
-        li.list-group-item.border-bottom.p-2
-          = link_to talent_path(live.talent) do
-            .media.m-0
-              - if live.talent.image?
-                .mr-3= image_tag(live.talent.image.url, width: 100)
-              - else
-                .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body.py-3
-                p= live.talent.name
-                p= l live.start_at, format: :full_date
+      = render :partial => "live", collection: @tomorrow_lives
       - if @tomorrow_lives.blank?
         li.text-center 明日のLIVE情報がありません
     = link_to 'MORE', lives_path(target_date: Time.current.tomorrow), class: 'btn btn-light text-dark'
@@ -40,18 +20,7 @@ article.mb-3
   .card
     .card-header.text-center.h5 NEW INFO
     ul.list-group.list-group-flush
-      - @latest_lives.each do |live|
-        li.list-group-item.border-bottom.p-2
-          = link_to talent_path(live.talent.id) do
-            .media.m-0
-              - if live.talent.image?
-                .mr-3= image_tag(live.talent.image.url, width: 100)
-              - else
-                .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body.py-3
-                p= live.talent.name
-                p= l live.start_at, format: :full_date
-
+      = render :partial => "live", collection: @latest_lives
     = link_to 'MORE', latest_uploaded_lives_path, class: 'btn btn-light text-dark'
 
 article.mb-3
@@ -72,5 +41,5 @@ article.mb-3
                 - if talent.lives.blank?
                   p まだありません
                 - else
-                  p= l talent.lives.last.start_at, format: :full_date
+                  p= l talent.lives.last.start_at, format: :short_datetime
     button.btn.btn-light.text-dark MORE

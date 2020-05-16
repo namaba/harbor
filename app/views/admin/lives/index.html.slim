@@ -23,7 +23,7 @@ scss:
 						tr
 							td= link_to live.talent.name, admin_life_path(live)
 							td= live.platform.name
-							td= l live.start_at, format: :full_date
+							td= l live.start_at, format: :short_datetime
 							td
 								= link_to '編集', edit_admin_life_path(live), class: 'btn btn-primary btn-sm'
 								= link_to '削除', admin_life_path(live), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger btn-sm'

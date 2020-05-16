@@ -1,7 +1,7 @@
 = form_with model: [:admin, @live], local: true  do |f|
   .form-group
     = f.label :talent_id, class: 'bmd-label-floating'
-    = f.collection_select :talent_id, Talent.all, :id, :name, {}, class: 'browser-default js-select2', required: true
+    = f.collection_select :talent_id, Talent.all, :id, :name, {}, class: 'browser-default talent-select2', required: true
   .form-group
     = f.label :platform_id, class: 'bmd-label-floating'
     = f.collection_select :platform_id, Platform.all, :id, :name, {}, class: 'browser-default js-select2', required: true

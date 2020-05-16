@@ -42,4 +42,4 @@ article.mb-3
                   p まだありません
                 - else
                   p= l talent.lives.last.start_at, format: :short_datetime
-    button.btn.btn-light.text-dark MORE
+    = link_to 'MORE', talents_path, class: 'btn btn-light text-dark'

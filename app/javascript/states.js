@@ -8,7 +8,17 @@ window.addEventListener('DOMContentLoaded', () => {
     theme: "material"
   });
 
+  $(".talent-select2").select2({
+    placeholder: "タレント選択してください",
+    theme: "material"
+  });
+
   $(".select2-selection__arrow")
     .addClass("material-icons")
     .html("arrow_drop_down");
+
+  $("#talentSearch .select2-selection__rendered")
+    .addClass("material-icons")
+    .html("search");
+
 })

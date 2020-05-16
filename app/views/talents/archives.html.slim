@@ -5,4 +5,4 @@ article.mb-3
       - @lives.each do |live|
         li.list-group-item
           .mr-3.w-25= live.platform.name
-          = l live.start_at, format: :full_date, class: 'btn btn-light text-dark'
+          = l live.start_at, format: :short_datetime, class: 'btn btn-light text-dark'

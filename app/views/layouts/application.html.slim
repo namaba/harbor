@@ -20,6 +20,6 @@ html[lang="ja"]
     main.bg-light
       == yield
 
-    - if controller.is_a?(WelcomeController)
+    - unless controller.is_a?(Admin::ApplicationController)
       = button_to new_life_path, method: :get, class: 'btn btn-success bmd-btn-fab active live_add_btn' do
         i.material-icons.create_icon create

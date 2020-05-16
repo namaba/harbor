@@ -8,7 +8,7 @@
       label.bmd-label-static Platform
       p= @live.platform.name
       label.bmd-label-static Start
-      p= l @live.start_at, format: :full_date
+      p= l @live.start_at, format: :short_datetime
 
     = link_to '編集する', edit_life_path, class: 'btn btn-outline-success mx-auto d-block '
     = link_to '削除する', life_path, method: :delete, class: 'btn btn-outline-secondary mx-auto d-block'

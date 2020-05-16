@@ -1,0 +1,42 @@
+article.mb-3
+  .card
+    .card-header.text-center.h5 TALENTS
+    ul.list-group.list-group-flush
+      - @talents.each do |talent|
+        li.list-group-item.border-bottom.p-2
+          = link_to talent_path(talent.id) do
+            .media.m-0
+              - if talent.image?
+                .mr-3= image_tag(talent.image.url, width: 100)
+              - else
+                .mr-3= image_tag 'profile_image_sample', :size => '100'
+              .media-body.py-3
+                p= talent.name
+                p 最新LIVE
+                - if talent.lives.blank?
+                  p まだありません
+                - else
+                  P= l talent.lives.last.start_at, format: :full_date
+scss:
+  .header_img {
+    width: 100%;
+    height: auto;
+    img {
+      width: 100%;
+    }
+  }
+article.mb-3
+  .card
+    .card-header RECOMEND
+    .d-flex.flex-wrap
+      - @talents.each do |talent|
+        .card.w-50
+          .header_img
+            - if talent.image?
+              = image_tag(talent.image.url, width: 100)
+            - else
+              = image_tag 'profile_image_sample'
+          .card-body
+            .card-title= talent.name
+            P= l talent.lives.last.start_at, format: :full_date
+

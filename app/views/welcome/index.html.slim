@@ -13,6 +13,8 @@ article.mb-3
               .media-body.py-3
                 p= live.talent.name
                 p= l live.start_at, format: :full_date
+      - if @today_lives.blank?
+        li.text-center 今日のLIVE情報がありません
     = link_to 'MORE', lives_path(target_date: Time.current), class: 'btn btn-light text-dark'
 
 article.mb-3
@@ -30,6 +32,8 @@ article.mb-3
               .media-body.py-3
                 p= live.talent.name
                 p= l live.start_at, format: :full_date
+      - if @tomorrow_lives.blank?
+        li.text-center 明日のLIVE情報がありません
     = link_to 'MORE', lives_path(target_date: Time.current.tomorrow), class: 'btn btn-light text-dark'
 
 article.mb-3
@@ -62,13 +66,11 @@ article.mb-3
                 .mr-3= image_tag(talent.image.url, width: 100)
               - else
                 .mr-3= image_tag 'profile_image_sample', :size => '100'
-              .media-body.py-3
-                p
-                  span= "#{i}位  #{talent.total_pv}PV"
-                  = talent.name
-                p 最新LIVE
+              .media-body.pt-3
+                p= "#{i}位  #{talent.total_pv}PV"
+                p= talent.name
                 - if talent.lives.blank?
                   p まだありません
                 - else
-                  P= l talent.lives.last.start_at, format: :full_date
+                  p= l talent.lives.last.start_at, format: :full_date
     button.btn.btn-light.text-dark MORE

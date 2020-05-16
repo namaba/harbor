@@ -13,11 +13,14 @@
 </head>
 
 <body>
-  <%== render 'layouts/header' %>
-  <%== render 'layouts/breadcrumb'%>
-  <main class="bg-light">
-    <%= yield %>
-  </main>
+<%== render 'layouts/header' %>
+<main class="bg-light">
+  <%= yield %>
+</main>
+
+<%= button_to root_path, method: :get, class: 'btn btn-warning bmd-btn-fab active live_add_btn' do %>
+  <i class="material-icons create_icon">create</i>
+<% end %>
 
 </body>
 

@@ -1,0 +1,25 @@
+doctype html
+html[lang="ja"]
+  head
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    title harbor
+    == csrf_meta_tags
+    == csp_meta_tag
+    == stylesheet_pack_tag 'application', media: 'all'
+    == javascript_pack_tag 'application'
+    javascript:
+      $(document).ready(function() { $('body').bootstrapMaterialDesign();});
+    == render 'layouts/datepicker'
+  body
+    - if controller.is_a?(Admin::ApplicationController)
+      == render 'layouts/admin_header'
+    - else
+      == render 'layouts/header'
+
+    main.bg-light
+      == yield
+
+    - if controller.is_a?(WelcomeController)
+      = button_to new_life_path, method: :get, class: 'btn btn-success bmd-btn-fab active live_add_btn' do
+        i.material-icons.create_icon create

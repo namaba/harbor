@@ -12,6 +12,15 @@
     = f.label :memo, class: 'bmd-label-floating'
     = f.text_field :memo, class: 'form-control'
 
+  #talent_categories.my-3
+    - field_index = 0
+    = f.fields_for :talent_categories  do |talent_category|
+      = f.label :category, class: 'bmd-label-floating'
+      = render 'talent_category_fields', f: talent_category, field_index: field_index
+      - field_index += 1
+    .links
+      = link_to_add_association 'Add talent',f, :talent_categories
+
   .form-group
     = image_tag(@talent.image.url, width: 100) if @talent.image?
     = f.label :image, class: 'bmd-label-floating'

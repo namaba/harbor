@@ -6,6 +6,7 @@ import "bootstrap-material-design";
 import "../stylesheets/application";
 
 import "../states.js"
+import "cocoon-js"
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();

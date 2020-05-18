@@ -1,62 +1,71 @@
 class Admin::TalentsController < Admin::ApplicationController
-	before_action :set_talent, only: %i[show edit update destroy]
+  before_action :set_talent, only: %i[show edit update destroy]
 
-	def index
-		@talents = Talent.all
-	end
+  def index
+    @talents = Talent.all
+  end
 
-	def new
-		@talent = Talent.new
-	end
+  def new
+    @talent = Talent.new
+    @talent.talent_categories.build
+  end
 
-	def create
-		@talent = Talent.new(talent_params)
-		if @talent.save
-			redirect_to admin_talent_path(@talent), notice: '保存しました'
-		else
-			flash.now[:alert] = @talent.errors.full_messages.join("\n")
-			render :new
-		end
-	end
+  def create
+    @talent = Talent.new(talent_params)
+    if @talent.save
+      redirect_to admin_talent_path(@talent), notice: '保存しました'
+    else
+      flash.now[:alert] = @talent.errors.full_messages.join("\n")
+      render :new
+    end
+  end
 
-	def show; end
+  def show;
+  end
 
-	def edit; end
+  def edit;
+  end
 
-	def update
-		@talent.attributes = talent_params
-		if @talent.save
-			redirect_to admin_talent_path(@talent), notice: '更新しました'
-		else
-			flash.now[:alert] = @talent.errors.full_messages.join("\n")
-			render :edit
-		end
-	end
+  def update
+    @talent.attributes = talent_params
+    if @talent.save
+      redirect_to admin_talent_path(@talent), notice: '更新しました'
+    else
+      flash.now[:alert] = @talent.errors.full_messages.join("\n")
+      render :edit
+    end
+  end
 
-	def destroy
-		option = if @talent.destroy
-			{ notice: '削除しました' }
-		else
-			{ alert: '削除に失敗しました' }
-		end
-		redirect_to admin_talents_path, option
-	end
+  def destroy
+    option = if @talent.destroy
+               { notice: '削除しました' }
+             else
+               { alert: '削除に失敗しました' }
+             end
+    redirect_to admin_talents_path, option
+  end
 
-	private
+  private
 
-	def set_talent
-		@talent = Talent.find params[:id]
-	end
-	
-	def talent_params
-		params.require(:talent).permit(
-			:name,
-			:instagram_url,
-			:youtube_url,
-			:memo,
-			:image,
-			:image_cache,
-			:remove_image,
-		)
-	end
+  def set_talent
+    @talent = Talent.find params[:id]
+  end
+
+  def talent_params
+    params.require(:talent).permit(
+      :name,
+      :instagram_url,
+      :youtube_url,
+      :memo,
+      :image,
+      :image_cache,
+      :remove_image,
+      talent_categories: [
+        :id,
+        :talent_id,
+        :category_id,
+        :_destroy
+      ]
+    )
+  end
 end

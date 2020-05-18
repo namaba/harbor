@@ -19,6 +19,7 @@ class Talent < ApplicationRecord
   has_many :lives, class_name: 'Live'
   has_many :talent_categories
   has_many :categories, through: :talent_categories
+  accepts_nested_attributes_for :talent_categories, reject_if: :all_blank
 
   sorted_set :ranking, global: true
 

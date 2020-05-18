@@ -1,0 +1,8 @@
+- i = local_assigns[:field_index].to_i || 0
+.nested-fields.mb-2
+  .d-flex
+    = f.collection_select :category_id, Category.all, :id, :title, {prompt: "カテゴリを選択してください"}, class: 'form-control', required: true
+    = i
+    - if (i > 0)
+      = link_to_remove_association f, data: { confirm: 'この日程候補を削除しますか？' }, class: 'text-muted mt-1' do
+        i.material-icons delete
